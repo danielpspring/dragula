@@ -165,7 +165,7 @@ function dragula (initialContainers, options) {
     // truthy check fixes #239, equality fixes #207
     //if (e.clientX !== void 0 && e.clientX === _moveX && e.clientY !== void 0 && e.clientY === _moveY) { //DPS
     //  return; //DPS
-    //} //DPS
+    //} //DPS 
     if (o.ignoreInputTextSelection) {
       var clientX = getCoord('clientX', e);
       var clientY = getCoord('clientY', e);
