@@ -132,7 +132,8 @@ function dragula (initialContainers, options) {
     _moveX = e.clientX;
     _moveY = e.clientY;
 
-    var ignore = whichMouseButton(e) !== 1 || e.metaKey || e.ctrlKey;
+    //var ignore = whichMouseButton(e) !== 1 || e.metaKey || e.ctrlKey;
+    var ignore = (e.which !== 0 && e.which !== 1) || e.metaKey || e.ctrlKey; //DPS
     if (ignore) {
       return; // we only care about honest-to-god left clicks and touch events
     }
@@ -156,14 +157,15 @@ function dragula (initialContainers, options) {
     if (!_grabbed) {
       return;
     }
-    if (whichMouseButton(e) === 0) {
+    //if (whichMouseButton(e) === 0) {
+    if (e.which !== 0 && e.which !== 1) { //DPS
       release({});
       return; // when text is selected on an input and then dragged, mouseup doesn't fire. this is our only hope
     }
     // truthy check fixes #239, equality fixes #207
-    if (e.clientX !== void 0 && e.clientX === _moveX && e.clientY !== void 0 && e.clientY === _moveY) {
-      return;
-    }
+    //if (e.clientX !== void 0 && e.clientX === _moveX && e.clientY !== void 0 && e.clientY === _moveY) { //DPS
+    //  return; //DPS
+    //} //DPS
     if (o.ignoreInputTextSelection) {
       var clientX = getCoord('clientX', e);
       var clientY = getCoord('clientY', e);
